@@ -1,0 +1,3 @@
+#!/bin/bash
+
+cd /home/z3ox1s/Documents/Projects/JavaScript/markup && yarn start

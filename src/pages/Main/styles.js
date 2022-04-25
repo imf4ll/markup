@@ -25,7 +25,7 @@ export const Editor = styled.textarea`
     padding: 0 10px;
     padding-top: 5px;
     background-color: transparent;
-    font-size: 12pt;
+    font-size: 11.5pt;
     font-weight: 400;
 
     &::-webkit-scrollbar {
