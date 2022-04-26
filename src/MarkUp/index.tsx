@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Container, Viewer } from './styles';
 import { markdownSyntax } from '../syntax';
 import Menu from '../components/Menu';
@@ -14,7 +14,7 @@ import remarkImages from 'remark-images';
 import rehypeRaw from 'rehype-raw';
 
 export default () => {
-    const [ text, setText ] = useState('');
+    const textRef = useRef<HTMLTextAreaElement>(null);
     const [ markdown, setMarkdown ] = useState('');
     const [ filePath, setFilePath ] = useState('');
     const [ created, setCreated ] = useState(false);
@@ -31,8 +31,8 @@ export default () => {
         filePath !== '' &&
             fs.readFile(filePath, 'utf8', (err: Error, data: FileSystemEntry) => {
                 if (!err) {
+                    textRef.current!.value = String(data);
                     setMarkdown(String(data));
-                    setText(String(data));
                     setSaved(true);
 
                 }
@@ -84,7 +84,7 @@ export default () => {
     
     const handleInput = ({ currentTarget }: { currentTarget: HTMLTextAreaElement }) => {
         setMarkdown(currentTarget.value);
-        setSaved(text !== '' || markdown !== '' ? false : true);
+        setSaved(markdown !== '' ? false : true);
 
     }
 
@@ -105,9 +105,9 @@ export default () => {
             <Menu handleNew={ handleNew } handleOpen={ handleOpen } />
             <Container onKeyDown={ handleKeybind }>
                 <textarea
+                    ref={ textRef }
                     spellCheck="false"
                     onChange={ handleInput }
-                    defaultValue={ text }
                 />
                 <Viewer
                     components={ markdownSyntax }
