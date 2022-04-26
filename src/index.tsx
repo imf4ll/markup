@@ -1,5 +1,5 @@
 import { render } from 'react-dom';
-import Markview from './pages/Main';
+import Markview from './pages/Markview';
 
 render (
     <Markview />,

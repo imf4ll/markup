@@ -1,5 +1,11 @@
 import styled from 'styled-components';
 import Markdown from 'react-markdown';
+import { ChangeEvent } from 'react';
+
+interface AreaProps {
+    spellCheck?: string;
+    onChange?: (e: ChangeEvent<HTMLTextAreaElement>) => void;
+}
 
 export const Container = styled.div`
     @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&display=swap');
@@ -9,7 +15,7 @@ export const Container = styled.div`
     }
 `;
 
-export const Editor = styled.textarea`
+export const Editor = styled.textarea<AreaProps>`
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;

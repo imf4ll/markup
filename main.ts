@@ -1,14 +1,13 @@
-const { app, BrowserWindow } = require('electron');
-const { platform } = require('process');
+import { app, BrowserWindow } from 'electron';
+import { platform } from 'process';
 
 const createWindow = () => {
     const window = new BrowserWindow({
-        width: 1000,
-        height: 600,
+        width: 900,
+        height: 560,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
-            enableRemoteModule: true,
         },
         transparent: true,
         title: 'MarkUp',
