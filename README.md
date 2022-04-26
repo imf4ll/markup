@@ -4,6 +4,7 @@
   <img src="./assets/screenshot.png" align="center" width="600" />
 </div>
 
+&nbsp;
 An app to view and edit markdown files, written in TypeScript and supported by Electron + ReactJS 👾
 
 &nbsp;
