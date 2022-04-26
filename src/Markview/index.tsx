@@ -90,7 +90,7 @@ export default () => {
             </Container>
         :
             <Home>
-                <p unselectable="on">Mark/\</p>
+                <p>Mark/\</p>
                 <div className="buttons">
                     <input
                         type="button"

@@ -64,9 +64,11 @@ export const Home = styled.div`
     }
 
     p {
-        margin-top: 2%;
-        margin-bottom: 5%;
+        margin-top: 3%;
+        margin-bottom: 3%;
         font-size: 100pt;
+        font-weight: bold;
+        letter-spacing: 3px;
         color: white;
         --moz-user-select: none;
         ---webkit-user-select: none;
