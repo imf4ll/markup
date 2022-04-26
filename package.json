@@ -1,16 +1,18 @@
 {
   "name": "markup",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A electron app to view and edit markdown texts.",
-  "main": "dist/main.js",
+  "main": "./dist/electron/main.js",
   "license": "MIT",
   "scripts": {
-    "react:start": "react-scripts start",
-    "electron:start": "wait-on tcp:3000 && electron --enable-transparent-visual --disable-gpu .",
+    "react:start": "PORT=14968 react-scripts start",
+    "electron:start": "wait-on tcp:14968 && electron --enable-transparent-visual --disable-gpu .",
     "start": "npm run build && concurrently -k \"BROWSER=none npm run react:start\" \"npm run electron:start\"",
-    "build": "tsc"
+    "build": "tsc --build --verbose",
+    "test": "npm run build && electron ."
   },
   "dependencies": {
+    "@electron/remote": "^2.0.8",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-is": "^18.0.0",

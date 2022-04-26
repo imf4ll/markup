@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 import Markdown from 'react-markdown';
 
-export const Container = styled.div`
+interface ContainerProps {
+    onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+}
+
+export const Container = styled.div<ContainerProps>`
     @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&display=swap');
     
     *, body {
@@ -24,7 +28,7 @@ export const Container = styled.div`
         padding: 0 10px;
         padding-top: 5px;
         background-color: transparent;
-        font-size: 11.5pt;
+        font-size: 12pt;
         font-weight: 400;
 
         &::-webkit-scrollbar {
@@ -37,6 +41,50 @@ export const Container = styled.div`
             background: rgb(40, 40, 40);
             border-radius: 10px;
         }
+    }
+`;
+
+export const Home = styled.div`
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&display=swap');
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    width: 100%;
+        
+    *, body {
+        font-family: 'Fira Sans', sans-serif;
+    }
+
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    p {
+        margin-top: 2%;
+        margin-bottom: 5%;
+        font-size: 100pt;
+        color: white;
+        --moz-user-select: none;
+        ---webkit-user-select: none;
+    }
+
+    input {
+        background-color: #101010;
+        border-radius: 5px;
+        border: 1px solid #6544DB;
+        padding: 10px;
+        font-size: 12pt;
+        color: white;
+        margin: 15px 0;
+        transition: transform ease 500ms;
+    }
+
+    input:hover {
+        transform: scale(1.05);
     }
 `;
 
