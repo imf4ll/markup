@@ -4,8 +4,10 @@ import { platform } from 'process';
 
 const createWindow = () => {
     const window = new BrowserWindow({
-        width: 900,
+        width: 1000,
         height: 560,
+        minWidth: 700,
+        minHeight: 500,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
@@ -44,6 +46,8 @@ const createWindow = () => {
 
         return filePath;
     });
+
+    ipcMain.handle('setTitle', async(_, ...args) => window.setTitle(args[0]));
 
     window.on('ready-to-show', () => window.show());
     window.removeMenu();

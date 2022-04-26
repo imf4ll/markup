@@ -1,7 +1,7 @@
 import { render } from 'react-dom';
-import Markview from './Markview';
+import MarkUp from './MarkUp';
 
 render (
-    <Markview />,
+    <MarkUp />,
     document.querySelector('#root')
 );

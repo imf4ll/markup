@@ -15,10 +15,17 @@
 - Easy-to-use
 
 &nbsp;
+## ♻️ Changelog (v1.0.2)
+- Added save/unsave status
+- Added name of file in titlebar
+- New menu (on top middle of window with 'New' and 'Open' options)
+- Some fixes
+
+&nbsp;
 ## 🔥 Todo
+- [x] Add "unsaved" and "saved" status
 - [ ] Add more plugins to improve funcionality
 - [ ] Remap all styles
-- [ ] Add "unsaved" and "saved" status
 - [ ] Better images support
 - [ ] Ident on tab
 
