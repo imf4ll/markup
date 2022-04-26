@@ -1,6 +1,8 @@
 # MarkUp
 
-<img src="./assets/screenshot.png" align="center" width="600" />
+<div align="center">
+  <img src="./assets/screenshot.png" align="center" width="600" />
+</div>
 
 An app to view and edit markdown files, written in TypeScript and supported by Electron + ReactJS 👾
 
@@ -18,6 +20,7 @@ An app to view and edit markdown files, written in TypeScript and supported by E
 - [ ] Remap all styles
 - [ ] Add "unsaved" and "saved" status
 - [ ] Better images support
+- [ ] Ident on tab
 
 &nbsp;
 ## 🔧 Setup
