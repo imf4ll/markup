@@ -1,6 +1,6 @@
 # MarkUp
 
-<img src="./assets/screenshot.png" width="600" />
+<img src="./assets/screenshot.png" align="center" width="600" />
 
 An app to view and edit markdown files, written in TypeScript and supported by Electron + ReactJS 👾
 
