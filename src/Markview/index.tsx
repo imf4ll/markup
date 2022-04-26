@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Container, Editor, Viewer } from './styles';
+import { Container, Viewer } from './styles';
 import { markdownSyntax } from '../syntax';
 
 // Plugins
@@ -15,7 +15,7 @@ export default () => {
 
     return (
         <Container>
-            <Editor
+            <textarea
                 spellCheck="false"
                 onChange={ handleInput }
             />
