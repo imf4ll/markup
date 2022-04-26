@@ -1,7 +1,7 @@
 # MarkUp
 
 <div align="center">
-  <img src="./assets/screenshot.png" align="center" width="600" />
+  <img src="./assets/screenshot.png" align="center" width="700" />
   <br><br>
   An app to view and edit markdown files, written in TypeScript and supported by Electron + ReactJS 👾
 </div>
