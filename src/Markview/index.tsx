@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Container, Editor, Viewer } from './styles';
-import { markdownSyntax } from '../../syntax';
+import { markdownSyntax } from '../syntax';
 
 // Plugins
 import remarkBreaks from 'remark-breaks';
