@@ -18,15 +18,13 @@ const createWindow = () => {
     window.loadURL("http://localhost:3000");
 }
 
-app
-    .whenReady().then(() => {
-        createWindow();
+app.whenReady().then(() => {
+    createWindow();
 
-    });
+});
 
-app
-    .on('window-all-closed', () => {
-        platform !== 'darwin' &&
-            app.quit()
+app.on('window-all-closed', () => {
+    platform !== 'darwin' &&
+        app.quit()
 
-    });
+});
