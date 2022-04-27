@@ -8,34 +8,28 @@ export const Container = styled.div`
     left: 50%;
     right: 50%;
     width: 15%;
-    height: 20%;
+    height: 25%;
     transform: translate(-50%, -80%);
     z-index: 9;
-    transition: all ease 0.5s;
+    transition: all ease 750ms;
     border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 
     :hover {
         background-color: rgba(16, 16, 16, 0.9);
-        width: 500px;
-        height: 12.5%;
+        width: 30%;
+        height: 10%;
         transform: translate(-50%, 10%);
-    }
-
-    .buttons {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        margin-top: 10px;
     }
 
     input {
         background-color: transparent;
-        border: 2px solid #6544DB;
-        border-radius: 4px;
         padding: 5px 10px;
+        border: none;
         color: white;
-        margin: 5px 10px;
         z-index: 999;
         cursor: pointer;
         transition: transform ease 350ms;
