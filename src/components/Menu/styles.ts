@@ -3,41 +3,40 @@ import styled from 'styled-components';
 export const Container = styled.div`
     @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&display=swap');
 
-    position: absolute;
+    position: relative;
     top: 0;
-    left: 50%;
-    right: 50%;
-    width: 15%;
-    height: 25%;
-    transform: translate(-50%, -80%);
-    z-index: 9;
+    left: 0;
+    width: 45px;
+    height: 100%;
     transition: all ease 750ms;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
 
-    :hover {
-        background-color: rgba(16, 16, 16, 0.9);
-        width: 30%;
-        height: 10%;
-        transform: translate(-50%, 10%);
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
-    input {
-        background-color: transparent;
-        padding: 5px 10px;
-        border: none;
-        color: white;
-        z-index: 999;
-        cursor: pointer;
-        transition: transform ease 350ms;
+    img {
         font-size: 12pt;
         font-family: 'Fira Sans', sans-serif;
-    }
+        padding: 4px;
+        border: none;
+        color: white;
+        margin: 2px 0;
+        cursor: pointer;
+        width: 24px;
+        transition: all ease 350ms;
+        border-radius: 10px;
 
-    input:hover {
-        transform: scale(1.1);
+        :first-of-type {
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+
+        :hover {
+            opacity: 0.6;
+            background: rgb(35, 35, 35);
+        }
     }
 `;

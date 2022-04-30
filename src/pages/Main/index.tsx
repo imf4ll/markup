@@ -1,7 +1,7 @@
-import { useState, useEffect, useRef } from 'react';
-import { Container, Viewer } from './styles';
-import { markdownSyntax } from '../syntax';
-import Menu from '../components/Menu';
+import { useState, useEffect, useRef, ChangeEvent } from 'react';
+import { Container, Viewer, ViewerContainer } from './styles';
+import { markdownSyntax } from '../../utils/syntax';
+import Menu from '../../components/Menu';
 
 // Electron integration
 const { ipcRenderer } = window.require('electron');
@@ -15,11 +15,12 @@ import rehypeRaw from 'rehype-raw';
 
 export default () => {
     const textRef = useRef<HTMLTextAreaElement>(null);
-    const [ markdown, setMarkdown ] = useState('');
-    const [ filePath, setFilePath ] = useState('');
-    const [ created, setCreated ] = useState(false);
-    const [ saved, setSaved ] = useState(false);
-    const [ mode, setMode ] = useState('create');
+    const viewerRef = useRef<HTMLDivElement>(null);
+    const [ markdown, setMarkdown ] = useState<string>('');
+    const [ filePath, setFilePath ] = useState<string>('');
+    const [ created, setCreated ] = useState<boolean>(false);
+    const [ saved, setSaved ] = useState<boolean>(true);
+    const [ mode, setMode ] = useState<string>('create');
 
     const handleFile = async () =>
         setFilePath(await ipcRenderer.invoke('showOpenDialog'));
@@ -28,14 +29,16 @@ export default () => {
         await ipcRenderer.invoke('setTitle', title);
 
     useEffect(() => {
-        filePath !== '' &&
-            fs.readFile(filePath, 'utf8', (err: Error, data: FileSystemEntry) => {
+        filePath !== undefined && filePath !== '' &&
+            fs.readFile(filePath, 'utf8', async (err: Error, data: FileSystemEntry) => {
                 if (!err) {
+                    handleSave(`${ filePath.split('/').pop() } | MarkUp`);
+
                     textRef.current!.value = String(data);
                     setMarkdown(String(data));
                     setSaved(true);
-
                 }
+
             });
 
     }, [ filePath ]);
@@ -82,10 +85,14 @@ export default () => {
         }
     }
     
-    const handleInput = ({ currentTarget }: { currentTarget: HTMLTextAreaElement }) => {
+    const handleInput = ({ currentTarget, target }: ChangeEvent<HTMLTextAreaElement>) => {
         setMarkdown(currentTarget.value);
         setSaved(markdown !== '' ? false : true);
 
+        if (target.selectionStart === currentTarget.value.length) {
+            viewerRef.current!.scrollTo(0, viewerRef.current!.scrollHeight);
+
+        }
     }
 
     const handleNew = () => {
@@ -101,22 +108,24 @@ export default () => {
     }
 
     return (
-        <>
-            <Menu handleNew={ handleNew } handleOpen={ handleOpen } />
-            <Container onKeyDown={ handleKeybind }>
+        <Container onKeyDown={ handleKeybind }>
+                <Menu saved={ saved } handleNew={ handleNew } handleOpen={ handleOpen } />
                 <textarea
                     ref={ textRef }
                     spellCheck="false"
                     onChange={ handleInput }
                 />
-                <Viewer
-                    components={ markdownSyntax }
-                    remarkPlugins={[ remarkBreaks, remarkGfm, remarkImages ]}
-                    rehypePlugins={[ rehypeRaw ]}
+                <ViewerContainer
+                    ref={ viewerRef }
                 >
-                    { markdown }
-                </Viewer>
-            </Container>
-        </>
+                    <Viewer
+                        components={ markdownSyntax }
+                        remarkPlugins={[ remarkBreaks, remarkGfm, remarkImages ]}
+                        rehypePlugins={[ rehypeRaw ]}
+                    >
+                        { markdown }
+                    </Viewer>
+                </ViewerContainer>
+        </Container>
     );
 }

@@ -45,9 +45,8 @@ const styles = {
         fontWeight: 'bold',
     },
     inlineCode: {
-        background: 'rgba(10, 10, 10, 0.8)',
-        padding: 7,
-        border: '1px solid #6544DB',
+        background: 'rgb(30, 30, 30)',
+        padding: 5,
         borderRadius: 5,
     }
 }

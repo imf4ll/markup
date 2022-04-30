@@ -1,20 +1,24 @@
 {
   "name": "markup",
-  "version": "1.0.1",
-  "description": "A electron app to view and edit markdown texts.",
-  "main": "./dist/electron/main.js",
-  "license": "MIT",
+  "productName": "MarkUp",
+  "version": "1.0.3",
+  "main": "build/electron/main.js",
+  "homepage": "./",
   "scripts": {
-    "react:start": "PORT=14968 react-scripts start",
-    "electron:start": "wait-on tcp:14968 && electron --enable-transparent-visual --disable-gpu .",
-    "start": "npm run build && concurrently -k \"BROWSER=none npm run react:start\" \"npm run electron:start\"",
+    "start": "concurrently -k \"BROWSER=none npm run react:start\" \"npm run electron:start\"",
     "build": "tsc --build --verbose",
-    "test": "npm run build && electron ."
+    "react:start": "PORT=14968 react-scripts start",
+    "react:build": "react-scripts build",
+    "electron:start": "wait-on tcp:14968 && electron --enable-transparent-visual --disable-gpu .",
+    "package": "npm run react:build && npm run build && electron-builder"
   },
+  "keywords": [],
+  "author": "z3oxs",
+  "license": "MIT",
   "dependencies": {
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-is": "^18.0.0",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "react-is": "^18.1.0",
     "react-markdown": "^8.0.3",
     "react-scripts": "^5.0.1",
     "react-syntax-highlighter": "^15.5.0",
@@ -23,6 +27,16 @@
     "remark-gfm": "^3.0.1",
     "remark-images": "^3.1.0",
     "styled-components": "^5.3.5"
+  },
+  "devDependencies": {
+    "@types/react-dom": "^18.0.3",
+    "@types/react-syntax-highlighter": "^13.5.2",
+    "@types/styled-components": "^5.1.25",
+    "concurrently": "^7.1.0",
+    "electron": "^18.2.0",
+    "electron-builder": "^23.0.3",
+    "typescript": "^4.6.4",
+    "wait-on": "^6.0.1"
   },
   "browserslist": {
     "production": [
@@ -36,13 +50,14 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "@types/react-dom": "^18.0.0",
-    "@types/react-syntax-highlighter": "^13.5.2",
-    "@types/styled-components": "^5.1.25",
-    "concurrently": "^7.1.0",
-    "electron": "^18.1.0",
-    "typescript": "^4.6.3",
-    "wait-on": "^6.0.1"
+  "build": {
+    "appId": "com.z3oxs.markup",
+    "extends": null,
+    "files": [
+      "build/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
   }
 }

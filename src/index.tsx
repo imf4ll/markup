@@ -1,7 +1,7 @@
 import { render } from 'react-dom';
-import MarkUp from './MarkUp';
+import Main from './pages/Main';
 
 render (
-    <MarkUp />,
+    <Main />,
     document.querySelector('#root')
 );

@@ -1,19 +1,64 @@
-import { MouseEventHandler } from 'react';
+import { useState, useEffect } from 'react';
 import { Container } from './styles';
+import Dialog from '../../components/DialogModal';
 
-interface MenuProps {
-    handleNew?: MouseEventHandler<HTMLInputElement>;
-    handleOpen?: MouseEventHandler<HTMLInputElement>;
-}
+import Add from '../../assets/add.svg';
+import Open from '../../assets/open.svg';
 
-export default ({ handleNew, handleOpen }: MenuProps) => {
+export default ({ saved, handleNew, handleOpen }: MenuProps) => {
+    const [ dialogOpen, setDialogOpen ] = useState<boolean>(false);
+    const [ choose, setChoose ] = useState<ChooseObject>();
+    const [ func, setFunc ] = useState<string>();
+ 
+    useEffect(() => {
+        if (choose !== undefined) {
+            if (!choose.choose) { return }
+
+            if (choose.function === 'open') {
+                handleOpen?.();
+
+            } else {
+                handleNew?.();
+
+            }
+        }
+
+    }, [ choose ]);
+
+    const handleClick = (func: string) => {
+        if (!saved) {
+            setDialogOpen(true);
+
+            setFunc(func);
+        
+        } else {
+            if (func === 'new') {
+                handleNew?.();
+
+            } else if (func === 'open') {
+                handleOpen?.();
+
+            }
+        }
+    }
 
     return (
-        <Container>
-            <div className="buttons">
-                <input type="button" value="New" onClick={ handleNew } />
-                <input type="button" value="Open" onClick={ handleOpen } />    
-            </div>
-        </Container>
+        <>
+            { dialogOpen && <Dialog choose={ setChoose } func={ func } dialogModal={ setDialogOpen } /> }
+            <Container>
+                <div className="buttons">
+                    <img
+                        src={ Add }
+                        title="New"
+                        onClick={ () => handleClick('new') }
+                    />
+                    <img
+                        src={ Open }
+                        title="Open"
+                        onClick={ () => handleClick('open') }
+                    />
+                </div>
+            </Container>
+        </>
     );
 }

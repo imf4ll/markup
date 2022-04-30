@@ -1,11 +1,11 @@
 import { app, BrowserWindow, ipcMain, dialog } from 'electron';
-import fs from 'fs';
 import { platform } from 'process';
+import fs from 'fs';
 
 const createWindow = () => {
     const window = new BrowserWindow({
         width: 1000,
-        height: 560,
+        height: 700,
         minWidth: 700,
         minHeight: 500,
         webPreferences: {
@@ -51,7 +51,14 @@ const createWindow = () => {
 
     window.on('ready-to-show', () => window.show());
     window.removeMenu();
-    window.loadURL("http://localhost:14968");
+
+    if (app.isPackaged) {
+        window.loadURL(`file://${ __dirname }/../index.html`);
+
+    } else {
+        window.loadURL("http://localhost:14968");
+        
+    }
 }
 
 app.whenReady().then(() => createWindow());
