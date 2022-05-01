@@ -5,14 +5,13 @@ import fs from 'fs';
 const createWindow = () => {
     const window = new BrowserWindow({
         width: 1000,
-        height: 700,
+        height: 600,
         minWidth: 700,
         minHeight: 500,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
         },
-        transparent: true,
         title: 'MarkUp',
         icon: "./assets/icon.png",
         show: false,

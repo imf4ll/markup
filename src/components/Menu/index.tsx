@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Container } from './styles';
+import { Container, ImgContainer } from './styles';
 import Dialog from '../../components/DialogModal';
 
 import Add from '../../assets/add.svg';
@@ -47,16 +47,20 @@ export default ({ saved, handleNew, handleOpen }: MenuProps) => {
             { dialogOpen && <Dialog choose={ setChoose } func={ func } dialogModal={ setDialogOpen } /> }
             <Container>
                 <div className="buttons">
-                    <img
-                        src={ Add }
-                        title="New"
-                        onClick={ () => handleClick('new') }
-                    />
-                    <img
-                        src={ Open }
-                        title="Open"
-                        onClick={ () => handleClick('open') }
-                    />
+                    <ImgContainer>
+                        <img
+                            src={ Add }
+                            title="New"
+                            onClick={ () => handleClick('new') }
+                        />
+                    </ImgContainer>
+                    <ImgContainer>
+                        <img
+                            src={ Open }
+                            title="Open"
+                            onClick={ () => handleClick('open') }
+                        />
+                    </ImgContainer>
                 </div>
             </Container>
         </>

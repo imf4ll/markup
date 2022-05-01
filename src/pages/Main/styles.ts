@@ -11,6 +11,7 @@ export const Container = styled.div<ContainerProps>`
     left: 0;
     display: flex;
     flex-direction: row;
+    background-color: rgb(20, 20, 20);
 
     *, body {
         font-family: 'Fira Sans', sans-serif;
@@ -35,7 +36,7 @@ export const Container = styled.div<ContainerProps>`
     }
         
     *::-webkit-scrollbar {
-        background-color: rgb(16, 16, 16);
+        background-color: rgb(12, 12, 12);
         border-radius: 5px;
         width: 7px;
     }
@@ -51,13 +52,14 @@ export const ViewerContainer = styled.div`
     height: 100%;
     word-wrap: break-word;
     overflow: auto;
-    border-left: 1px solid rgb(24, 24, 24);
+
+    border-left: 1px solid rgb(12, 12, 12);
 `;
 
 export const Viewer = styled(Markdown)`
     font-size: 12pt;
     color: white;
-    background-color: transparent;
     padding: 0 10px;
     overflow-x: hidden;
+    background-color: rgb(20, 20, 20);
 `;

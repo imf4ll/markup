@@ -9,6 +9,7 @@ export const markdownSyntax = {
     h5: ({ ...props }) => <h5 style={ styles.heading } { ...props } />,
     h6: ({ ...props }) => <h6 style={ styles.heading } { ...props } />,
     em: ({ ...props }) => <i style={ styles.em } { ...props } />,
+    a: ({ ...props }) => <a style={ styles.a } { ...props } />,
     code: ({ inline, children, className, ...props }: SyntaxHighlighterProps) => {
         const match = /language-(\w+)/.exec(className || '');
 
@@ -48,6 +49,10 @@ const styles = {
         background: 'rgb(30, 30, 30)',
         padding: 5,
         borderRadius: 5,
+    },
+    a: {
+        color: '#8363f2',
+        textDecoration: 'none',
     }
 }
 

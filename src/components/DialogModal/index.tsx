@@ -12,9 +12,12 @@ export default ({ choose, func, dialogModal }: DialogModalProps) => {
 
     return (
         <Container>
-            <h1>Are you sure you want to create a new file?</h1>
-            <input type="button" value="Yes" onClick={ () => handleChoose(true) } />
-            <input type="button" value="No" onClick={ () => handleChoose(false) } />
+            <section>
+                <span>⚠️</span>
+                <h1>Current file is unsaved, are you sure?</h1>
+                <input type="button" value="Yes" onClick={ () => handleChoose(true) } />
+                <input type="button" value="No" onClick={ () => handleChoose(false) } />
+            </section>
         </Container>
     );
 }

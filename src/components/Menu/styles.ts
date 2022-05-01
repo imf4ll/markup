@@ -6,37 +6,35 @@ export const Container = styled.div`
     position: relative;
     top: 0;
     left: 0;
-    width: 45px;
+    width: 32px;
     height: 100%;
     transition: all ease 750ms;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgb(12, 12, 12);
 
     .buttons {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
+`;
+
+export const ImgContainer = styled.div`
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    transition: all ease 350ms;
+
+    :hover {
+        opacity: 0.6;
+        background: rgb(35, 35, 35);
+    }
 
     img {
         font-size: 12pt;
         font-family: 'Fira Sans', sans-serif;
-        padding: 4px;
-        border: none;
         color: white;
-        margin: 2px 0;
-        cursor: pointer;
-        width: 24px;
-        transition: all ease 350ms;
-        border-radius: 10px;
-
-        :first-of-type {
-            margin-top: 10px;
-            margin-bottom: 5px;
-        }
-
-        :hover {
-            opacity: 0.6;
-            background: rgb(35, 35, 35);
-        }
+        width: 21px;
+        margin-top: 10px;
+        margin-bottom: 5px;
     }
 `;

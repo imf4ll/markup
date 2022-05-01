@@ -1,7 +1,7 @@
 {
   "name": "markup",
   "productName": "MarkUp",
-  "version": "1.0.3",
+  "version": "1.0.3b",
   "main": "build/electron/main.js",
   "homepage": "./",
   "scripts": {
